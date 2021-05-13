@@ -3,6 +3,7 @@ const path = require('path')
 const mysql = require('mysql')
 const bodyparser = require('body-parser')
 const dotenv = require('dotenv')
+const hbs = require('hbs')
 
 dotenv.config({ path:'./.env' })
 
@@ -16,9 +17,7 @@ const db = mysql.createConnection({
 })
 
 const publicDirectory = path.join(__dirname,'./public')
-//console.log(__dirname)
 app.use(express.static(publicDirectory))
-
 app.set('view engine', 'hbs')
 
 db.connect((err,res) => {
@@ -33,6 +32,10 @@ db.connect((err,res) => {
 
 app.get('/', (req,res) => {
     res.render('index')
+})
+
+app.get('/signin', (req,res) => {
+    res.render('signin')
 })
 
 app.listen(4000, () => {
