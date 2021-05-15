@@ -20,6 +20,7 @@ const publicDirectory = path.join(__dirname,'./public')
 app.use(express.static(publicDirectory))
 app.set('view engine', 'hbs')
 
+// checks database connection
 db.connect((err,res) => {
     if(err) {
         throw err
@@ -30,14 +31,22 @@ db.connect((err,res) => {
     }
 })
 
+// get started with home page
 app.get('/', (req,res) => {
     res.render('index')
 })
 
+// log into dashboard
 app.get('/signin', (req,res) => {
     res.render('signin')
 })
 
+// register an user
+app.get('/register', (req,res) => {
+    res.render('register')
+})
+
+// server listens
 app.listen(4000, () => {
     console.log('Server is running on port 4000')
 })
