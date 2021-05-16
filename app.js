@@ -31,20 +31,8 @@ db.connect((err,res) => {
     }
 })
 
-// get started with home page
-app.get('/', (req,res) => {
-    res.render('index')
-})
-
-// log into dashboard
-app.get('/signin', (req,res) => {
-    res.render('signin')
-})
-
-// register an user
-app.get('/register', (req,res) => {
-    res.render('register')
-})
+// define routes
+app.use('/', require('./routes/page'))
 
 // server listens
 app.listen(4000, () => {
