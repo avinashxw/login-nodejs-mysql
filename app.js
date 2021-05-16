@@ -1,7 +1,6 @@
 const express = require('express')
 const path = require('path')
 const mysql = require('mysql')
-const bodyparser = require('body-parser')
 const dotenv = require('dotenv')
 const hbs = require('hbs')
 
@@ -18,6 +17,12 @@ const db = mysql.createConnection({
 
 const publicDirectory = path.join(__dirname,'./public')
 app.use(express.static(publicDirectory))
+
+// Pare URL-encoded bodies (as set by HTML forms)
+app.use(express.urlencoded({ extended: false }))
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json())
+
 app.set('view engine', 'hbs')
 
 // checks database connection
@@ -33,6 +38,7 @@ db.connect((err,res) => {
 
 // define routes
 app.use('/', require('./routes/page'))
+app.use('/auth', require('./routes/auth'))
 
 // server listens
 app.listen(4000, () => {
