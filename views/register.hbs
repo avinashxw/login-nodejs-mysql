@@ -44,11 +44,18 @@
                     <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" autocapitalize="true" autocomplete="off" name="password">
+                    <input type="password" class="form-control" autocapitalize="true" autocomplete="off" name="password">
                     <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" autocapitalize="true" autocomplete="off" name="passwordconfirm">
+                    <label for="floatingPassword">Confirm Password</label>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
             </form>
+    {{#if message }}
+      <h6 class="alert alert-danger">{{message}}</h6>
+    {{/if}}
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
