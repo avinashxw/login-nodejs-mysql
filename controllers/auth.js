@@ -5,11 +5,6 @@ const bcrypt = require('bcryptjs')
 exports.register = (req,res) => {
     console.log(req.body)
 
-    /* const name = req.body.name
-    const email = req.body.email
-    const password = req.body.password
-    const passwordconfirm = req.body.passwordconfirm */
-
     const {
         name, email, password, passwordconfirm
     } = req.body
